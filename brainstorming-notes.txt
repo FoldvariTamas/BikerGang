@@ -1,0 +1,188 @@
+front-end:
+- landing page
+- oldal nyelve
+	- adatbázisból származó stringek nyelvenként tárolva
+- főoldal:
+	- profilok
+		- standard ügyfél
+			- ingyenes
+			- időpontfoglalás
+			- kerékpárok[]
+			- bemutatkozás (opcionális)
+		- prémium ügyfél
+			- fizetős
+			- időpontfoglalás
+			- kerékpárok[]
+			- gyorsszervíz lehetősége (lefoglalt eszközök?)
+			- biztosítás
+			- bemutatkozás (opcionális)
+		- kollégák
+			- név, elérhetőség, (skill level), bemutatkozás
+		
+
+oldal szekciói:
+		- profil megváltoztatása
+			- (form) név, elérhetőség, bemutatkozás (meglévő adatokkal kitöltve)
+			- új jelszó
+			- my bikes
+				- új bringa regisztrációja
+				- meglévő bringáim
+					- biztosítás vásárlása
+					- meghirdetés
+					- archiválás
+	- webshop:
+			- kerékpár vásárlása
+				- elérhető kerékpárok (új és használt)
+			- eladás (link a profil/bringáimra)
+			- alkatrész
+			- szerszám
+			- kiegészítő
+		- keresőfelület --> típus alapján
+		- alkatrészek in stock (adatbázis)
+	- szervízszolgáltatás
+		- időpontfoglalás
+			- kerékpár megadása
+			- probléma jellege
+				- pipaerdő/menü
+				- általános szervizelés
+			- megjegyzés
+			- ekkor megjelenő szabad időpontok
+		- Szerviz+ (gyorsszervíz prémium felhasználóknak)
+	- túrák
+		- túratérképek
+		- link a webshopra
+		- időpontfoglalás
+	- biztosítás
+		(link a profil/bringáimhoz)
+	- bicycle news szekció
+		- kerékpáros újdonságok (reklámfelület)
+		
+		
+back-end:
+
+- API
+	- endpoints:
+		- root (landing page + nyelvválasztás(link tartalmazza))
+		- registration
+		- időpontok
+			- elérhető időpontok
+			- lefoglalt időpontok
+			- automatikusan kiadott szabad időpontok
+				- skill level alapján --> probléma jellegéből származtatva
+		- túraoldal
+			- 
+		- biztosítás oldal
+			- 
+		- webshop
+			- 
+		- bicycle news
+			- create
+			- read
+			- update
+			- delete
+		- users
+			- new user
+			- read user
+			- update user
+				- register bicycle
+				- sell bicycle
+				- change name
+				- regisztrált túrák
+				- user type (fizetős/ingyenes)
+				- if premium: biztosított kerékpárok update-je
+			- delete user
+			
+- osztályok:
+	- standard ügyfél
+		- id
+		- password
+		- időpontok listája
+		- túraregisztrációk listája
+		- List<bicycle> bikes
+		- bemutatkozás (opcionális)
+	- prémium ügyfél
+		- id
+		- password
+		- időpontok listája
+		- List<bicycle> bikes
+		- túraregisztrációk listája
+		- gyorsszervíz lehetősége (lefoglalt eszközök?)
+		- biztosított kerékpárok listája
+		- bemutatkozás (opcionális)
+	- kollégák
+		- id
+		- név
+		- elérhetőség
+		- skill level
+		- bemutatkozás
+	- alkatrész
+		- id
+		- make
+		- model
+		- ár
+		- leírás
+		- List<bicycle> CompatibilityList (bicycle id alapján database-ből)
+	- bicycle
+		- id
+		- alvázszám
+		- manufacturer
+		- model
+		- type
+		- size
+			- wheel size
+			- vázméret
+			- (dimensions)
+		- state (new/used)
+		- service history
+		- biztosítás (nullable)
+	- hiba
+		- típusa
+		- leírása (nullable)
+	- javítás
+		- hiba
+		- időpont
+		- javítás összege
+		- alkatrészigény (lista)
+	- biztosítás
+		- bicycle id
+		- díj
+		- időtartam
+	- bicycleNews
+		- id
+		- type (túra / termékreklám)
+		- picture link
+		- description
+	- túra
+		- id
+		- típus
+		- nehézség
+		- időtartam
+		
+programszintű methodok:
+	- premium / standard ügyfelek időpont szerinti rendezése
+		- változás esetén új (kategória szerinti) ügyfél létrehozása
+		- régi ügyfél törlése adatbázisból
+
+Enums:
+	- bicycle types
+	- wheel size
+	- bicycle state
+		- new
+		- used
+	- kolléga skill level
+	- vázméret
+	- bicycleNewsType
+	- hibák típusa
+	- túra típus
+	- túra nehézség
+		
+		
+Database tables
+	- users
+	- alkatrészek
+	- szerszámok
+	- kerékpárok
+	- bicycles news
+	- túrák
+		
+		

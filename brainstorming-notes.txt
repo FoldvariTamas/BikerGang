@@ -109,6 +109,13 @@ back-end:
 		- túraregisztrációk listája
 		- List<bicycle> bikes
 		- transactionHistory
+		- methods:
+			- register bike
+			- delete bike
+			- sell bike (meghirdet)
+			- register to tour
+			- unregister to tour
+			- buy stuff/service
 	- prémium ügyfél  (extends standard ügyfél class)
 		- gyorsszervíz lehetősége (lefoglalt eszközök?)
 		- biztosított kerékpárok listája
@@ -236,6 +243,7 @@ Database tables
 	- transactions
 		- id
 		- total price
+		- 
 		- item ids (as string sep. by -"-)
 	- language elements
 		- language

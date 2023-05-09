@@ -247,7 +247,8 @@ Database tables
 		- item ids (as string sep. by -"-)
 	- language elements
 		- language
-		- MEGHATÁROZÁS
+		- oldal
+		- meghatározás
 		- text
 		
 		

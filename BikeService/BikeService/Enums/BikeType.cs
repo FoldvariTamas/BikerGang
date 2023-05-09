@@ -1,6 +1,6 @@
 namespace BikeService.Enums;
 
-public enum BikeTypes
+public enum BikeType
 {
     RoadBike,
     MountainBike,

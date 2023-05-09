@@ -56,6 +56,10 @@ oldal szekciói:
 		(link a profil/bringáimhoz)
 	- bicycle news szekció
 		- kerékpáros újdonságok (reklámfelület)
+	- kosár
+		- 
+	- kosár utáni payment
+		- 
 		
 		
 back-end:
@@ -93,29 +97,25 @@ back-end:
 			- delete user
 			
 - osztályok:
-	- standard ügyfél
+	- person
 		- id
+		- name
+		- e-mail
 		- password
-		- időpontok listája
-		- túraregisztrációk listája
-		- List<bicycle> bikes
+		- phone
 		- bemutatkozás (opcionális)
-	- prémium ügyfél
-		- id
-		- password
+	- standard ügyfél (extends person class)
 		- időpontok listája
-		- List<bicycle> bikes
 		- túraregisztrációk listája
+		- List<bicycle> bikes
+		- transactionHistory
+	- prémium ügyfél  (extends standard ügyfél class)
 		- gyorsszervíz lehetősége (lefoglalt eszközök?)
 		- biztosított kerékpárok listája
-		- bemutatkozás (opcionális)
-	- kollégák
-		- id
-		- név
-		- elérhetőség
+	- kollégák (extends person class)
 		- skill level
 		- bemutatkozás
-	- alkatrész
+	- alkatrész (record)
 		- id
 		- make
 		- model
@@ -134,7 +134,7 @@ back-end:
 			- (dimensions)
 		- state (new/used)
 		- service history
-		- biztosítás (nullable)
+		- biztosítás
 	- hiba
 		- típusa
 		- leírása (nullable)
@@ -157,11 +157,27 @@ back-end:
 		- típus
 		- nehézség
 		- időtartam
+	- transaction
+		- id
+		- total price
+		- item ids
+		
+		
+service level
+	
+	- IDBAccess
+		- handles database-related operations
+		- stores no values
+	- IOperations
+		- filtering, queries, changes, updates, etc.	
+	
 		
 programszintű methodok:
 	- premium / standard ügyfelek időpont szerinti rendezése
 		- változás esetén új (kategória szerinti) ügyfél létrehozása
 		- régi ügyfél törlése adatbázisból
+		
+		
 
 Enums:
 	- bicycle types
@@ -179,10 +195,54 @@ Enums:
 		
 Database tables
 	- users
+		id, name, e-mail, password, phone, user type, intro, appointments (as string sep. by ","), túraregisztrációk (-"-), bikes (-"-), transactions (-"-), insuredBikes (-"-), skill level
 	- alkatrészek
+		- id
+		- make
+		- model
+		- ár
+		- leírás
+		- compatibility (alkatrész id-k stringként, sep. by -"-)
 	- szerszámok
+		- id
+		- make
+		- model
+		- ár
+		- leírás
+		- compatibility (kerékpár id-k stringként, sep. by -"-)		
 	- kerékpárok
+		- id
+		- alvázszám
+		- manufacturer
+		- model
+		- type
+		- size
+			- wheel size
+			- vázméret
+			- (dimensions)
+		- state (new/used)
+		- service history
+		- biztosítás
 	- bicycles news
+		- id
+		- type (túra / termékreklám)
+		- picture link
+		- description
 	- túrák
+		- id
+		- típus
+		- nehézség
+		- időtartam
+	- transactions
+		- id
+		- total price
+		- item ids (as string sep. by -"-)
+	- language elements
+		- language
+		- MEGHATÁROZÁS
+		- text
+		
+		
+		
 		
 		

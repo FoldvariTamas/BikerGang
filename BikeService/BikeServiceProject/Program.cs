@@ -1,3 +1,7 @@
+using BikeServiceProject.DAL;
+using BikeServiceProject.Models;
+using BikeServiceProject.Service;
+
 var builder = WebApplication.CreateBuilder(args);
 
 var corsName = "localhost";
@@ -15,6 +19,10 @@ builder.Services.AddCors(options =>
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+builder.Services.AddSingleton<IRepository<Bike>, InMemoryBikeRepository>();
+builder.Services.AddSingleton<IBikeService, BikeService>();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

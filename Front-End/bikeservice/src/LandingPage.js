@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import BasicExample from './Components/Navbar';
 
 export default function WelcomeMessage(){
     const [greeting, setGreeting] = useState('');
@@ -15,10 +16,12 @@ export default function WelcomeMessage(){
 
     return (
       <div>
+        <div><BasicExample/></div>        
         <h1>{greeting}</h1>
       </div>
     );  
 }
+
 
 
 
